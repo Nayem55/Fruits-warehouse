@@ -1,0 +1,6 @@
+.footer-container{
+    height: 50vh;
+    background-image: url('./footer.png');
+    background-repeat: no-repeat;
+    background-size: cover ;
+}
