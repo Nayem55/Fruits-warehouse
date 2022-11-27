@@ -1,12 +1,6 @@
 import React from "react";
 import "./Home.css";
 import img from "./img.jpg";
-import grape from './grapes.jpeg'
-import mango from './mangoes.webp'
-import lichi from './lichi.webp'
-import apple from './apple.jpg'
-import strawberry from './strawberry.jfif'
-import blackberry from './blackberry.jfif'
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -53,45 +47,45 @@ const Home = () => {
         <div className="home-inventory-products">
             <div className="home-inventory-product">
                 <h3>Grape</h3>
-                <img src={grape} alt="" />
+                <img src="https://i.ibb.co/cwYv2C8/grapes.jpg" alt="grapes" border="0"/>
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
                 <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
             <div className="home-inventory-product">
                 <h3>Mango</h3>
-                <img src={mango} alt="" />
+                <img src="https://i.ibb.co/yFKCyCB/mangoes.webp" alt="" />
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
-                <button>Check your inventory</button>
+                <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
             <div className="home-inventory-product">
                 <h3>Blackberry</h3>
-                <img src={blackberry} alt="" />
+                <img src="https://i.ibb.co/2ZKwmwg/blackberry.jpg" alt=""/>
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
-                <button>Check your inventory</button>
+                <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
             <div className="home-inventory-product">
                 <h3>Lichi</h3>
-                <img src={lichi} alt="" />
+                <img src="https://i.ibb.co/Z1DzbFJ/lichi.webp" alt="lichi" border="0"/>
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
-                <button>Check your inventory</button>
+                <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
             <div className="home-inventory-product">
                 <h3>Apple</h3>
-                <img src={apple} alt="" />
+                <img src="https://i.ibb.co/z7W8vcb/apple.jpg" alt="" />
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
-                <button>Check your inventory</button>
+                <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
             <div className="home-inventory-product">
                 <h3>Strawberry</h3>
-                <img src={strawberry} alt="" />
+                <img src="https://i.ibb.co/1TbKSg7/strawberry.jpg" alt="" />
                 <p>price: $49/kg</p>
                 <p>In stock: 50 kgs</p>
-                <button>Check your inventory</button>
+                <button onClick={()=>navigate('/inventory')}>Check your inventory</button>
             </div>
 
         </div>

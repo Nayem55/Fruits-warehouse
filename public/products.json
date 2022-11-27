@@ -1,0 +1,38 @@
+[
+    {
+      "title":"Mango",
+      "img":"https://i.ibb.co/yFKCyCB/mangoes.webp" ,
+      "price":"$49", 
+      "stock":"50"
+    },
+    {
+      "title":"Grape",
+      "img":"https://i.ibb.co/cwYv2C8/grapes.jpg" ,
+      "price":"$49", 
+      "stock":"50"
+    },
+    {
+      "title":"Strawberry",
+      "img":"https://i.ibb.co/1TbKSg7/strawberry.jpg" ,
+      "price":"$49", 
+      "stock":"50"
+    },
+    {
+      "title":"Lichi",
+      "img":"https://i.ibb.co/Z1DzbFJ/lichi.webp" ,
+      "price":"$49", 
+      "stock":"50"
+    },
+    {
+      "title":"Blackberry",
+      "img":"https://i.ibb.co/2ZKwmwg/blackberry.jpg" ,
+      "price":"$49", 
+      "stock":"50"
+    },
+    {
+      "title":"Apple",
+      "img":"https://i.ibb.co/z7W8vcb/apple.jpg" ,
+      "price":"$49", 
+      "stock":"50"
+    }
+]

@@ -1,0 +1,62 @@
+.manage {
+  padding: 40px 80px;
+  transition: all 0.2s ease-in;
+}
+thead {
+  color: purple;
+}
+
+.status {
+  color: #83bf2d;
+  font-weight: bolder;
+}
+
+tr {
+  transition: all 0.2s ease-in;
+}
+
+tr:hover {
+  background-color: purple;
+  color: white !important;
+}
+.edit {
+  color: #83bf2d;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.delete {
+  color: rgb(255, 84, 84);
+  cursor: pointer;
+}
+.delete:hover {
+  color: white;
+}
+.edit:hover {
+  color: white;
+}
+.summary {
+  background-color: #83bf2d;
+  color: white;
+  margin-top: 20px;
+  padding: 20px 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bolder;
+  padding-bottom: 8px;
+}
+.search {
+  padding: 5px 10px;
+  width: 20%;
+  border: 1px solid gray;
+}
+.add {
+  width: 15%;
+  background-color: purple;
+  color: white;
+  border: none;
+  transition: all 0.2s ease-in;
+}
+.add:hover {
+  background-color: #83bf2d;
+}

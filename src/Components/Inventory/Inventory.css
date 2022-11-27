@@ -1,6 +1,6 @@
-.inventory{
-    height: 40vh;
-}
-.inventory h1{
-    text-align: center;
+.Inventory{
+    padding: 40px 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
 }

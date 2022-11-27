@@ -1,10 +1,13 @@
 import React from 'react';
+import useProducts from '../../CustomHooks/UseProducts';
+import Product from '../Product/Product';
 import './Inventory.css'
 
 const Inventory = () => {
+    const[products]= useProducts()
     return (
-        <div className='inventory'>
-            <h1>My Inventory</h1>
+        <div className='Inventory'>
+        {products.map(product=><Product product={product}/>)}
         </div>
     );
 };

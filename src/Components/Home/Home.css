@@ -62,7 +62,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid greenyellow;
+    border: 1px solid 
+    #83bf2d;
 }
 .home-inventory-product img{
     margin-bottom: 30px;
@@ -74,9 +75,11 @@
     margin-top: 0;
     margin-bottom: 0;
     padding: 10px;
-    background-color: greenyellow;
+    background-color: 
+    #83bf2d;
     text-align: center;
-    width: 96%;
+    width: 100%;
+    padding: 10px 0;
     color: white;
 }
 .home-inventory-product p{
@@ -88,14 +91,16 @@
     position: relative;
     bottom: 0;
     border: none;
-    background-color: greenyellow;
+    background-color: 
+    #83bf2d;
     color: white;
     margin-top: 40px;
     font-weight: bolder;
 }
 .home-inventory-product button:hover{
     background-color: white;
-    border-top: 2px solid greenyellow;
-    color: greenyellow;
+    border-top: 1px solid 
+    #83bf2d;
+    color: #83bf2d;
     
 }
