@@ -1,0 +1,45 @@
+.signup{
+    height: 80vh;
+}
+.form{
+    border: 1px solid #83bf2d;
+    width: 30%;
+    margin: 6% auto;
+    padding: 20px;
+}
+.form-container{
+    width: 80%;
+}
+.input-grp input{
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.submit{
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    background-color: #83bf2d;
+    color: white;
+    border: none;
+    transition: all .2s ease-in;
+}
+.submit:hover{
+    background-color: purple;
+}
+.login-text{
+    text-align: center;
+    margin-top: 20px;
+}
+.login-text a{
+    text-decoration: none;
+    color: #83bf2d;
+    font-weight: bolder;
+}
+.google{
+    width: 40px;
+}
+.signup-btn{
+    width: 100%;
+    margin-bottom: 20px;
+}

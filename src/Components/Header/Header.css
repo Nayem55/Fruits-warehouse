@@ -11,14 +11,37 @@
 .logo{
     width: 200px;
 }
-.navLinks a{
+.navLinks{
+    display: flex;
+}
+.navLinks a,.navLinks p{
     text-decoration: none;
     margin-right: 20px;
     color: purple;
     font-weight: bolder;
     transition: all .2s ease-in;
     font-size: larger;
+    cursor: pointer;
 }
-.navLinks a:hover{
-    color: #83bf2d;
+.navLinks a:hover,.navLinks p:hover{
+    color: #83bf2d !important;
+}
+.user-options{
+    display: flex;
+    flex-direction: column ;
+    padding: 20px 10px;
+    background-color:rgba(128, 0, 128, 0.526);
+    transition: all .2s ease-in;
+}
+.user-options a{
+    color:white !important ;
+    font-size: medium;
+}
+.show{
+    position: absolute;
+    right: 20px;
+}
+.hide{
+    position: absolute;
+    right: -400px;
 }

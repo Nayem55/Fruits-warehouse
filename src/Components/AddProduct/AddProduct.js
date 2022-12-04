@@ -1,39 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useProducts from "../../CustomHooks/UseProducts";
 import "./AddProduct.css";
 import emptyImage from "./no-image-icon-6.png";
 
-const AddProduct = () => {
+const AddProduct = ({editId,setEditId }) => {
+  const [products] = useProducts();
   const [previewSource, setPreviewSource] = useState("");
+  const navigate= useNavigate()
+  let editedProduct = products.find((product) => product._id === editId);
+  if(editedProduct){
+    document.getElementById("title").defaultValue = editedProduct.title;
+    document.getElementById("stock").defaultValue = editedProduct.stock;
+    document.getElementById("price").defaultValue = editedProduct.price;
+    document.getElementById("email").defaultValue = editedProduct.email;
+  }
 
-
-  const handleAdd=(e)=>{
+  const handleAdd = (e) => {
     e.preventDefault();
     const title = e.target.name.value;
     const img = previewSource;
     const stock = e.target.amount.value;
     const price = e.target.price.value;
     const email = e.target.email.value;
-    let newProduct ={
-      title : title,
-      img : img,
-      stock : stock,
-      price : price,
-      email : email
+    let newProduct = {
+      title: title,
+      img: img,
+      stock: stock,
+      price: price,
+      email: email,
+    };
+    fetch("http://localhost:5000/products", {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+    e.target.reset();
+    setPreviewSource("  ")
+  };
+
+  const handleUpdate=(e)=>{
+    e.preventDefault();
+    const title = e.target.name.value;
+    const img = previewSource ? previewSource : editedProduct.img;
+    const stock = e.target.amount.value;
+    const price = e.target.price.value;
+    const email = e.target.email.value;
+    let updatedProduct = {
+      _id:editedProduct._id,
+      title: title,
+      img: img,
+      stock: stock,
+      price: price,
+      email: email,
     };
     fetch('http://localhost:5000/products',{
-      method:'post',
-      headers: {
-        'content-type': 'application/json'
+      method:"put",
+      headers:{
+       "content-type":"application/json" 
       },
-      body: JSON.stringify(newProduct)
+      body:JSON.stringify(updatedProduct)
     })
     .then(res=>res.json())
-    .then(data=>{
-      console.log(data)
-    })
-    e.target.reset()
-  } 
-  
+    .then(data=>console.log(data))
+    navigate('/manage')
+  }
+
   const handleChange = (e) => {
     const file = e.target.files[0];
     previewFile(file);
@@ -47,30 +85,52 @@ const AddProduct = () => {
   };
   return (
     <div className="addProduct">
-      <h2>Add Item</h2>
-      <form className="form" onSubmit={handleAdd}>
+      {editedProduct ? <h2>Edit Item</h2> : <h2>Add Item</h2>}
+      <form className="form" onSubmit={editedProduct?handleUpdate : handleAdd}>
         <div className="img-container">
           <div className="choosenImage">
             {previewSource ? (
               <img src={previewSource} alt="" />
+            ) : editedProduct ? (
+              <img src={editedProduct.img} alt=""></img>
             ) : (
               <img src={emptyImage} alt=""></img>
             )}
           </div>
-          <input
-            onChange={handleChange}
-            type="file"
-            name="image"
-          />
+          <input onChange={handleChange} type="file" name="image" />
         </div>
 
         <div className="details-container">
-          <input type="text" name="name" placeholder="Name"/>
-          <input type="number" name="amount" placeholder="Amount" />
-          <input type="text" name="price" placeholder="Price" />
-          <textarea name="dexcription" placeholder="Description"></textarea>
-          <input type="email" name="email" placeholder="Email" />
-          <input className="button" type="submit" value="Add Item" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            id="title"
+          />
+          <input
+            type="number"
+            name="amount"
+            placeholder="Amount(Kg)"
+            id="stock"
+          />
+          <input
+            type="text"
+            name="price"
+            placeholder="Price"
+            id="price"
+          />
+          <textarea name="description" placeholder="Description"></textarea>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            id="email"
+          />
+          {editedProduct ? (
+            <input className="button" type="submit" value="Edit Item" />
+          ) : (
+            <input className="button" type="submit" value="Add Item" />
+          )}
         </div>
       </form>
     </div>

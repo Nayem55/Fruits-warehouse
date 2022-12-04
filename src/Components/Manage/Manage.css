@@ -1,6 +1,11 @@
 .manage {
   padding: 40px 80px;
   transition: all 0.2s ease-in;
+
+}
+.table-container{
+  height: 50vh;
+  overflow: scroll;
 }
 thead {
   color: purple;

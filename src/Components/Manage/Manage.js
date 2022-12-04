@@ -1,23 +1,48 @@
-import React from "react";
 import useProducts from "../../CustomHooks/UseProducts";
 import "./Manage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-const Manage = () => {
-  const [products] = useProducts();
+const Manage = ({setEditId}) => {
+  const [products,setProduct] = useProducts();
   const navigate = useNavigate();
   let total = 0;
   products.forEach((product) => {
     total = total + product.stock * product.price;
   });
+  const handleEdit=(id)=>{
+    setEditId(id);
+    navigate('/addProduct')
+  }
+  const handleAdd=()=>{
+    navigate('/addproduct')
+    setEditId("")
+  }
+
+    const handleDelete = (item) => {
+      fetch('http://localhost:5000/products',{
+        method:'delete',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(item)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+      })
+      const rest = products.filter((product) => product._id !== item._id);
+      setProduct(rest);
+    };
+    
   return (
     <div className="manage">
       <div className="d-flex justify-content-between mb-5">
         <input className="search" type="text" name="" id="" placeholder="Serach item" />
-        <button onClick={()=>navigate('/addproduct')} className="add">Add Product</button>
+        <button onClick={handleAdd} className="add">Add Product</button>
       </div>
-      <table class="table table-striped">
+      <div className="table-container">
+      <table class="table table-striped ">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -42,10 +67,12 @@ const Manage = () => {
               <td className="status">In stock</td>
               <td className="action">
                 <FontAwesomeIcon
+                  onClick={()=>handleEdit(product._id)}
                   className="edit"
                   icon={faPenToSquare}
                 ></FontAwesomeIcon>
                 <FontAwesomeIcon
+                  onClick={()=>handleDelete(product)}
                   className="delete"
                   icon={faTrash}
                 ></FontAwesomeIcon>
@@ -54,6 +81,8 @@ const Manage = () => {
           ))}
         </tbody>
       </table>
+      </div>
+     
       <div className="summary">
         <div className="text-center">
           <p className="mb-0">Total Items</p>
