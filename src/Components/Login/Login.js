@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase_init';
 import img from '../Signup/download.png'
 
@@ -11,22 +11,28 @@ const Login = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword (auth);
+  const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+
 
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
 
   useEffect(()=>{
-    if(user){
-      navigate("/home")
+    if(user||user1){
+      navigate(from, { replace: true });
     }
-  },[user])
+  },[user,user1])
+
+  if(loading||loading1){
+    return
+  }
 
   const handleSubmit=(e)=>{
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    if(loading){
-      return
-    }
     signInWithEmailAndPassword(email,password);
 
   }
@@ -53,7 +59,7 @@ const Login = () => {
               required
             />
           </div>
-          <p style={{ color: "red" }}>{error?.message}</p>
+          <p style={{ color: "red" }}>{error?.message||error1?.message}</p>
           <input className="submit" type="submit" value="Login" />
           <p className="login-text">
             Don't have an account? <Link to="/signup">Sign up</Link>{" "}
@@ -63,7 +69,7 @@ const Login = () => {
             <p className='text-center'>or</p>
             <hr />
           </div>
-          <button className='signup-btn'>
+          <button className='signup-btn' onClick={()=>signInWithGoogle()}>
             {" "}
             <img className='google' src={img} alt="" /> Continue with Google
           </button>

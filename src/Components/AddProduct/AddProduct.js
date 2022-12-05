@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import useProducts from "../../CustomHooks/UseProducts";
+import auth from "../../firebase_init";
 import "./AddProduct.css";
 import emptyImage from "./no-image-icon-6.png";
 
 const AddProduct = ({editId,setEditId }) => {
   const [products] = useProducts();
   const [previewSource, setPreviewSource] = useState("");
-  const navigate= useNavigate()
+  const navigate= useNavigate();
+  const user = useAuthState(auth);
   let editedProduct = products.find((product) => product._id === editId);
   if(editedProduct){
     document.getElementById("title").defaultValue = editedProduct.title;
     document.getElementById("stock").defaultValue = editedProduct.stock;
     document.getElementById("price").defaultValue = editedProduct.price;
-    document.getElementById("email").defaultValue = editedProduct.email;
   }
 
   const handleAdd = (e) => {
@@ -86,7 +88,7 @@ const AddProduct = ({editId,setEditId }) => {
   return (
     <div className="addProduct">
       {editedProduct ? <h2>Edit Item</h2> : <h2>Add Item</h2>}
-      <form className="form" onSubmit={editedProduct?handleUpdate : handleAdd}>
+      <form className="add-form" onSubmit={editedProduct?handleUpdate : handleAdd}>
         <div className="img-container">
           <div className="choosenImage">
             {previewSource ? (
@@ -125,6 +127,7 @@ const AddProduct = ({editId,setEditId }) => {
             name="email"
             placeholder="Email"
             id="email"
+            value={user[0]?.email}
           />
           {editedProduct ? (
             <input className="button" type="submit" value="Edit Item" />

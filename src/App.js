@@ -9,6 +9,7 @@ import AddProduct from './Components/AddProduct/AddProduct';
 import { useState } from 'react';
 import Signup from './Components/Signup/Signup';
 import Login from './Components/Login/Login';
+import RequireAuth from './Components/RequiredAuth';
 
 function App() {
   const [editId,setEditId]=useState("")
@@ -18,8 +19,16 @@ function App() {
      <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
-        <Route path='/manage' element={<Manage setEditId={setEditId}></Manage>}></Route>
+        <Route path='/inventory' element={
+        <RequireAuth>
+        <Inventory></Inventory>
+        </RequireAuth>
+        }></Route>
+        <Route path='/manage' element={
+        <RequireAuth>
+        <Manage setEditId={setEditId}></Manage>
+        </RequireAuth>
+        }></Route>
         <Route path='/addproduct' element={<AddProduct editId={editId} setEditId={setEditId}></AddProduct>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
         <Route path='/login' element={<Login/>}></Route>

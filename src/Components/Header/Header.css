@@ -8,6 +8,7 @@
     background-color: white;
     z-index: 10;
 }
+
 .logo{
     width: 200px;
 }
@@ -42,6 +43,5 @@
     right: 20px;
 }
 .hide{
-    position: absolute;
-    right: -400px;
+   display: none;
 }

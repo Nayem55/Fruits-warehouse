@@ -1,15 +1,24 @@
-import React from 'react';
-import useProducts from '../../CustomHooks/UseProducts';
-import Product from '../Product/Product';
-import './Inventory.css'
+import React from "react";
+import useProducts from "../../CustomHooks/UseProducts";
+import Product from "../Product/Product";
+import "./Inventory.css";
 
 const Inventory = () => {
-    const[products]= useProducts()
-    return (
-        <div className='Inventory'>
-        {products.map(product=><Product product={product}/>)}
-        </div>
-    );
+  const [products] = useProducts();
+  return (
+    <div className={`${products.length > 0 ? "Inventory" : ""}`}>
+      {products.map((product) => (
+        <Product product={product} />
+      ))}
+      <div className={`${products.length === 0 ? "alert" : "d-none"}`}>
+        {products.length === 0 && (
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Inventory;
