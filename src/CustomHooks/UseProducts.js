@@ -7,7 +7,7 @@ const useProducts=()=>{
     const user = useAuthState(auth);
     const email = user[0]?.email;
     useEffect(()=>{
-        fetch(`https://fruitify-server.vercel.app/?email=${email}`)
+        fetch(`https://fruitify-server.vercel.app/products?email=${email}`)
         .then(res=>res.json())
         .then(data=>setProduct(data))
     },[email])

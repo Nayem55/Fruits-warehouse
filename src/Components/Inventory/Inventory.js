@@ -5,10 +5,7 @@ import "./Inventory.css";
 
 const Inventory = () => {
   const [products] = useProducts();
-  console.log(products)
-  if(products.length === 0){
-    setTimeout(()=>window.location.reload(),20000)
-}
+
   return (
     <div className={`${products.length > 0 ? "Inventory" : ""}`}>
       {products.map((product) => (
