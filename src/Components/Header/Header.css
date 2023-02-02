@@ -3,17 +3,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     background-color: white;
     z-index: 10;
+    width: 100%;
 }
 
 .logo{
     width: 200px;
 }
+.icon{
+    display: none;
+}
 .navLinks{
     display: flex;
+    transition: all .2s ease-in;
+}
+.mobile-login{
+    display: none;
 }
 .navLinks a,.navLinks p{
     text-decoration: none;
@@ -38,10 +46,66 @@
     color:white !important ;
     font-size: medium;
 }
+
 .show{
     position: absolute;
     right: 20px;
 }
 .hide{
-   display: none;
+   position: absolute;
+   right: -400px;
+}
+
+
+@media (max-width:700px){
+    .header{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    .logo{
+        width: 150px;
+    }
+    .icon{
+       display: block;
+       margin-right: 20px;
+       font-size: 30px;
+       color: purple;
+    }
+    .navLinks{
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(128, 0, 128, 0.526);
+        margin-top:20px;
+        padding: 10px;
+        width: 100%;
+    }
+    .navLinks a,.navLinks p{
+        color: white;
+    }
+  
+    .mobile-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .navShow{
+        position: absolute;
+        top: 58px;
+        right: 0;
+    }
+    .navHide{
+        position: absolute;
+        top: 58px;  
+        right: -600px;
+    }
+    .user-container{
+        display: none;
+    }
+    .mobile-login{display: block;}
 }

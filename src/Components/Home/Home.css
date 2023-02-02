@@ -3,6 +3,7 @@
     height: 80vh;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-top: 100px;
 }
 .banner-text{
     height: 80vh;
@@ -103,4 +104,35 @@
     #83bf2d;
     color: #83bf2d;
     
+}
+
+@media(max-width:700px){
+    .banner-text{
+        text-align: center;
+        padding-top: 30%;
+    }
+    .banner-text h1{
+        font-size: 40px;
+    }
+    .banner-text p{
+        font-size: 18px;
+
+    }
+    .section-1{
+        flex-direction: column;
+        padding: 20px;
+    }
+    .section-description{
+        width: 100%;
+    }
+    .section-img{
+        width: 100%;
+    }
+    .home-inventory{
+        padding: 40px;
+    }
+    .home-inventory-products{
+        display: flex;
+        flex-direction: column;
+    }
 }

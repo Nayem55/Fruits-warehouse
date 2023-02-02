@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
+    margin-top: 100px;
 }
 .alert{
     color: rgb(212, 43, 43);
@@ -10,4 +11,15 @@
     text-align: center;
     margin-top: 10%;
     
+}
+
+@media(max-width:700px){
+    .alert{
+        margin-top: 50%;       
+    }
+    .Inventory{
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+    }
 }

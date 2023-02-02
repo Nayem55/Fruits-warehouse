@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import useProducts from "../../CustomHooks/UseProducts";
@@ -32,7 +32,7 @@ const AddProduct = ({editId,setEditId }) => {
       price: price,
       email: email,
     };
-    fetch("http://localhost:5000/products", {
+    fetch("https://fruitify-server.vercel.app/products", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -62,7 +62,7 @@ const AddProduct = ({editId,setEditId }) => {
       price: price,
       email: email,
     };
-    fetch('http://localhost:5000/products',{
+    fetch('https://fruitify-server.vercel.app/products',{
       method:"put",
       headers:{
        "content-type":"application/json" 

@@ -20,7 +20,7 @@ const Manage = ({setEditId}) => {
   }
 
     const handleDelete = (item) => {
-      fetch('http://localhost:5000/products',{
+      fetch('https://fruitify-server.vercel.app/products',{
         method:'delete',
         headers: {
           'content-type': 'application/json'
@@ -63,7 +63,7 @@ const Manage = ({setEditId}) => {
               <td>{product.title}</td>
               <td>${product.price}</td>
               <td>{product.stock} kgs</td>
-              <td>{product.stock * product.price}</td>
+              <td>${product.stock * product.price}</td>
               <td className="status">In stock</td>
               <td className="action">
                 <FontAwesomeIcon

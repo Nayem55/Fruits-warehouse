@@ -1,7 +1,7 @@
 .manage {
   padding: 40px 80px;
   transition: all 0.2s ease-in;
-
+  margin-top: 100px;
 }
 .table-container{
   height: 50vh;
@@ -64,4 +64,25 @@ tr:hover {
 }
 .add:hover {
   background-color: #83bf2d;
+}
+
+@media(max-width:700px){
+  .manage {
+    padding: 40px;  
+  }
+  .search {
+    width: 40%;
+  }
+  .add {
+    width: 40%;
+  }
+  .summary {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bolder;
+    padding-bottom: 8px;
+  }
 }
